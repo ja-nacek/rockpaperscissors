@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, paper, scissors</title>
+</head>
+
+<body>
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function getComputerChoice() {
+            let choice = Math.floor(Math.random() * 3);
+            if (choice == 1) {
+                console.log("Computer picks rock.")
+                return "rock";
+            } else if (choice == 2) {
+                console.log("Computer picks paper.")
+                return "paper";
+            } else {
+                console.log("Computer picks scissors.")
+                return "scissors";
+            }
+        }
+
+        function getHumanChoice() {
+            let choice = prompt("Rock paper or scissors?");
+            choice = choice.toLowerCase();
+            if (choice == "rock" || choice == "paper" || choice == "scissors") {
+                console.log("Human picks " + choice)
+                return choice;
+            }
+        }
+
+        function playRound(humanChoice, computerChoice) {
+            if (humanChoice == "rock") {
+                if (computerChoice == "rock") {
+                    console.log("Draw!");
+                } else if (computerChoice == "paper") {
+                    computerScore = computerScore + 1;
+                    console.log("Computer won!");
+                } else {
+                    humanScore = humanScore + 1;
+                    console.log("Human won!");
+                }
+            } else if (humanChoice == "paper") {
+                if (computerChoice == "rock") {
+                    humanScore = humanScore + 1;
+                    console.log("Human won!");
+                } else if (computerChoice == "paper") {
+                    console.log("Draw!");
+                } else {
+                    computerScore = computerScore + 1;
+                    console.log("Computer won!");
+                }
+            } else {
+                if (computerChoice == "rock") {
+                    computerScore = computerScore + 1;
+                    console.log("Computer won!");
+                } else if (computerChoice == "paper") {
+                    humanScore = humanScore + 1;
+                    console.log("Human won!");
+                } else {
+                    console.log("Draw!");
+                }
+            }
+        }
+
+        function playGame() {
+            let humanSelection = getHumanChoice();
+            let computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            humanSelection = getHumanChoice();
+            computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            humanSelection = getHumanChoice();
+            computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            humanSelection = getHumanChoice();
+            computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            humanSelection = getHumanChoice();
+            computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+
+            console.log("Game over. Human score is " + humanScore + ". Computer score is " + computerScore + ".")
+
+        }
+
+        playGame();
+
+    </script>
+</body>
+
+</html>
